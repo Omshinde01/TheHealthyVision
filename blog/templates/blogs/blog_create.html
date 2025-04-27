@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="blog-form-container shadow-lg p-4 rounded">
+        <h2 class="text-center fw-bold">📝 Create Blog</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="mt-3">
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label fw-bold">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary w-100 mt-2">🚀 Post Blog</button>
+        </form>
+
+        <a href="{% url 'blog_list' %}" class="d-block text-center mt-3 text-decoration-none text-primary">⬅ Back to Blogs</a>
+    </div>
+</div>
+
+<!-- Internal CSS -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .blog-form-container {
+        background: white;
+        max-width: 500px;
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .form-label {
+        font-size: 15px;
+        color: #333;
+    }
+
+    /* Bigger and more visible title input */
+    input[type="text"],
+    textarea {
+        padding: 12px;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    /* Bigger textarea for blog content */
+    textarea {
+        min-height: 150px;  /* Increased height for better visibility */
+        resize: vertical;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+
+    a.text-primary:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

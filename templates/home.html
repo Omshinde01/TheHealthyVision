@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Healthy Vision</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+    {% load static %}
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-6 shadow-md">
+        <div class="text-2xl font-bold text-blue-600">The Healthy Vision</div>
+        <div>
+            <a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-600 mx-4">About</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'appointment_list' %}" class="text-gray-600 hover:text-blue-600 mx-4">My Appointments</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="text-gray-600 hover:text-blue-600 mx-4">My Appointments</a>
+            {% endif %}
+            <a href="{% url 'blog_list' %}" class="text-gray-600 hover:text-blue-600 mx-4">Blog</a>
+            <a href="{% url 'contactus' %}" class="text-gray-600 hover:text-blue-600 mx-4">Contact</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="text-white bg-red-500 px-4 py-2 rounded-lg shadow-md hover:bg-red-600 mx-2">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="text-white bg-blue-600 px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 mx-2">Login</a>
+            <a href="{% url 'register' %}" class="text-white bg-green-500 px-4 py-2 rounded-lg shadow-md hover:bg-green-600">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center px-10 py-16">
+    
+        <div class="flex justify-center">
+            <img src="{% static 'images/hero.png' %}" alt="Healthy Diet" style="height: 450px;" class="">
+        </div>
+
+        <div class="mt-8 md:mt-0">
+            <h1 class="text-4xl font-bold text-gray-900">I help people find <span class="text-blue-600">peace</span> with food.</h1>
+            <p class="mt-4 text-lg text-gray-600">
+                Learn to <span class="font-bold text-blue-600">love</span> your body and develop a healthy relationship with food. 
+                Let’s make nutrition stress-free!
+            </p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'book_appointment' %}" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+                    Book Appointment
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="mt-6 inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition">
+                    Login to Book Appointment
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50 text-center">
+        <h2 class="text-3xl font-bold text-gray-900">How to Connect with Me</h2>
+        <div class="mt-8 px-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                <span class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-800">1</span>
+                <h3 class="text-xl font-bold mt-4">Book Your First Session</h3>
+                <p class="mt-2 text-gray-600">Fill out a brief form and choose a convenient date for your consultation.</p>
+            </div>
+    
+            <!-- Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                <span class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-800">2</span>
+                <h3 class="text-xl font-bold mt-4">Get Personalized Advice</h3>
+                <p class="mt-2 text-gray-600">Receive expert dietary recommendations based on your health goals.</p>
+            </div>
+    
+            <!-- Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                <span class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-800">3</span>
+                <h3 class="text-xl font-bold mt-4">Start Your Journey</h3>
+                <p class="mt-2 text-gray-600">Implement the plan and enjoy a healthier lifestyle with continued support.</p>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+<!-- Full-width Section -->
+<div class="w-full flex flex-col-reverse md:flex-row items-center justify-between px-10 py-16 bg-white">
+  
+    <!-- Left Text Content -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <h1 class="text-4xl font-bold text-gray-900">Delicious & Nutritious</h1>
+      <p class="mt-4 text-gray-600">
+        Build a healthy relationship with food and enjoy balanced meals curated just for you. Wellness begins with what’s on your plate!
+      </p>
+      <a href="{% url 'blog_list' %}" class="mt-6 inline-block bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition">
+        Check Out more Blogs
+      </a>
+    </div>
+  
+    <!-- Right Floating Image Section (Full Width) -->
+    <div class="relative w-full md:w-1/2 flex justify-center items-center">
+      <!-- Main Big Image -->
+      <img src="{% static 'images/healthy.png' %}" alt="Healthy Plate" class="w-full max-w-lg z-10 relative">
+  
+      <!-- Floating Food Emojis -->
+      <div class="absolute w-full max-w-lg h-full animate-spin-slow pointer-events-none">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl">🥦</div>
+        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl">🍎</div>
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-2xl">🥑</div>
+        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl">🍊</div>
+        <div class="absolute top-10 right-10 text-2xl">🥗</div>
+        <div class="absolute bottom-10 left-10 text-2xl">🍇</div>
+      </div>
+    </div>
+  
+  </div>
+  
+{% load static %}
+
+<!-- Owner Details Section -->
+<section class="py-12 bg-cover bg-center text-center border-t" style="background-image: url('{% static 'images/bckgrnd.jpg' %}');">
+    <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900">In Your Service</h2>
+        <p class="mt-4 text-gray-700">Meet the expert behind The Healthy Vision</p>
+
+        <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-8 px-6">
+            <div>
+                <img src="{% static 'images/girl1.webp' %}" alt="Owner Photo" class="w-40 h-40 rounded-full object-cover mx-auto md:mx-0 shadow-md">
+            </div>
+            <div class="text-left max-w-md">
+                <h3 class="text-xl font-semibold text-blue-600">Dt.Amishi Shah </h3>
+                <p class="text-gray-700 mt-2">Certified Nutritionist & Wellness Coach with 5+ years of experience in helping individuals improve their relationship with food and achieve balanced living.</p>
+                <p class="text-gray-600 mt-2">📍 Pune, India</p>
+                <p class="text-gray-600">📧 shah.amishi2001@gmail.com</p>
+                <p class="text-gray-600">📞 +91 6269403566</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+    
+  <!-- Testimonial Section -->
+<section class="py-20 bg-gray-50 text-center">
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">What Our Clients Say</h2>
+    <p class="text-gray-600 mb-12">Real feedback from those who found peace with food through us.</p>
+  
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+      
+      <!-- Testimonial 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <p class="text-gray-700 italic">“This platform helped me fix my unhealthy eating habits. I feel more confident and energetic every day.”</p>
+        <div class="mt-4">
+          <p class="font-bold text-blue-600">Priya M.</p>
+          <p class="text-sm text-gray-500">Software Engineer</p>
+        </div>
+      </div>
+  
+      <!-- Testimonial 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <p class="text-gray-700 italic">“The personalized nutrition advice changed my life. It was like talking to a friend who truly understands food and health.”</p>
+        <div class="mt-4">
+          <p class="font-bold text-blue-600">Ramesh K.</p>
+          <p class="text-sm text-gray-500">Freelance Designer</p>
+        </div>
+      </div>
+  
+      <!-- Testimonial 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <p class="text-gray-700 italic">“Booking appointments was super easy, and the sessions were insightful. Highly recommended for anyone on a health journey!”</p>
+        <div class="mt-4">
+          <p class="font-bold text-blue-600">Anjali S.</p>
+          <p class="text-sm text-gray-500">Student</p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-100 text-center">
+        <h2 class="text-3xl font-bold text-gray-900">Contact Us</h2>
+        <p class="mt-4 text-gray-600"><a href="{% url 'contactus' %}" style="color: rgb(12, 121, 185);">Have questions?</a> Reach out to us for more information.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 py-6 border-t">
+        &copy; 2025 The Healthy Vision | All Rights Reserved.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto; padding: 20px; background: #F8F6F3; border-radius: 10px; text-align: center; font-family: Arial, sans-serif;">
+    {% if blog.image %}
+        <img src="{{ blog.image.url }}" alt="Blog Image" style="width: 100%; border-radius: 10px;">
+    {% endif %}
+    <h2 style="color: #000; font-size: 28px; margin-top: 20px;">{{ blog.title }}</h2>
+    <p style="color: #555; font-size: 14px;">By {{ blog.author }} | {{ blog.created_at }}</p>
+    <p style="color: #333; font-size: 16px; line-height: 1.6;">{{ blog.content }}</p>
+    
+    <div style="margin-top: 20px;">
+        <a href="{% url 'blog_list' %}" style="text-decoration: none; background: #E63946; color: #fff; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-right: 10px;">Back to Blogs</a>
+        
+    </div>
+</div>
+{% endblock %}

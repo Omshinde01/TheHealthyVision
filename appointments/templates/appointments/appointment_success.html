@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-lg rounded-lg p-8 text-center w-96">
+        <h2 class="text-2xl font-bold text-green-600">Appointment Booked Successfully</h2>
+        <p class="mt-4 text-gray-600">We will contact you soon for confirmation.</p>
+        <a href="{% url 'home' %}" class="mt-6 inline-block bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
+            Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}

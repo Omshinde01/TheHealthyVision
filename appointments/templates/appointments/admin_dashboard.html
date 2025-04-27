@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Appointments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-6 bg-white shadow-md">
+        <div class="text-2xl font-bold text-blue-600">Admin Dashboard</div>
+        <div>
+            <a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-600 mx-4">Home</a>
+            <a href="{% url 'logout' %}" class="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="p-8">
+        <h1 class="text-3xl font-bold mb-6">All Appointments</h1>
+
+        <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+            <table class="min-w-full table-auto">
+                <thead class="bg-blue-100">
+                    <tr class="text-left text-gray-700 text-sm uppercase tracking-wider">
+                        <th class="px-6 py-3">Name</th>
+                        <th class="px-6 py-3">Email</th>
+                        <th class="px-6 py-3">Phone</th>
+                        <th class="px-6 py-3">Date</th>
+                        <th class="px-6 py-3">Time</th>
+                        <th class="px-6 py-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-6 py-4">{{ appointment.full_name }}</td>
+                        <td class="px-6 py-4">{{ appointment.email }}</td>
+                        <td class="px-6 py-4">{{ appointment.phone }}</td>
+                        <td class="px-6 py-4">{{ appointment.date }}</td>
+                        <td class="px-6 py-4">{{ appointment.time }}</td>
+                        <td class="px-6 py-4">
+                            <form method="POST" action="{% url 'update_status' appointment.id %}">
+                                {% csrf_token %}
+                                <select name="status" onchange="this.form.submit()" class="border rounded px-2 py-1 text-sm">
+                                    <option value="Pending" {% if appointment.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="Confirmed" {% if appointment.status == 'Confirmed' %}selected{% endif %}>Confirmed</option>
+                                    <option value="Cancelled" {% if appointment.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                </select>
+                            </form>
+                        </td>
+                        <td><input type="submit" name="submit" value="Update" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"></td>
+                        
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                            No appointments found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 py-6 border-t mt-10">
+        &copy; 2025 The Healthy Vision | Admin Panel
+    </footer>
+
+</body>
+</html>

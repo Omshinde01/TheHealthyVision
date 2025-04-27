@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card p-4 shadow-lg rounded" style="width: 450px; height: 500px; overflow-y: auto;">
+        <h2 class="text-center mb-3 text-primary">Register</h2>
+
+        <!-- Display Form Errors -->
+        {% if form.errors or profile_form.errors %}
+            <div class="alert alert-danger">
+                <strong>There were some errors in your submission:</strong>
+                <ul class="mb-0">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ field|capfirst }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for field, errors in profile_form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ field|capfirst }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- User Fields -->
+            <div class="mb-2">
+                <label class="form-label fw-bold">{{ form.username.label_tag }}</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-2">
+                <label class="form-label fw-bold">{{ form.email.label_tag }}</label>
+                {{ form.email }}
+            </div>
+            <div class="mb-2">
+                <label class="form-label fw-bold">{{ form.password1.label_tag }}</label>
+                {{ form.password1 }}
+            </div>
+            <div class="mb-2">
+                <label class="form-label fw-bold">{{ form.password2.label_tag }}</label>
+                {{ form.password2 }}
+            </div>
+
+            <hr>
+
+            <!-- Profile Fields -->
+            
+
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+
+        <p class="mt-2 text-center">
+            Already have an account? <a href="{% url 'login' %}" class="text-primary fw-bold">Login</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    /* Reduce form height to 500px */
+    .card {
+        max-height: 500px;
+        overflow-y: auto; /* Scroll when needed */
+    }
+
+    /* Styling input fields */
+    input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input:focus {
+        border-color: #1565C0;
+        outline: none;
+        box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2 class="fw-bold text-uppercase">Get in Touch</h2>
+
+    <div class="row mt-4">
+        <!-- Address Section -->
+        <div class="col-md-4">
+            <div class="card border-0 bg-transparent text-black">
+                <div class="card-body">
+                    <div class="icon mb-3">
+                        <i class="fas fa-map-marker-alt fa-3x"></i>
+                    </div>
+                    <h5 class="fw-bold">ADDRESS</h5>
+                    <p>Weifield Group Contracting<br>146 Yuma Street<br>Denver, CO 80223</p>
+                    <p><strong>Northern Division Office</strong><br>1270 Automation Drive<br>Windsor, CO 80550</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phone Section -->
+        <div class="col-md-4">
+            <div class="card border-0 bg-transparent text-black">
+                <div class="card-body">
+                    <div class="icon mb-3">
+                        <i class="fas fa-phone-alt fa-3x"></i>
+                    </div>
+                    <h5 class="fw-bold">PHONE</h5>
+                    <p><strong>Weifield Group Contracting</strong><br>303.428.2011 phone<br>303.202.0466 facsimile</p>
+                    <p><strong>Weifield 24/7 Service Department</strong><br>303.428.2011 (Press 2 for emergency calls)</p>
+                    <p><strong>Northern Division Office</strong><br>303.428.2011 phone<br>303.202.0466 facsimile</p>
+                    <p><strong>Wyoming Office</strong><br>307.757.7967 phone</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Section -->
+        <div class="col-md-4">
+            <div class="card border-0 bg-transparent text-black">
+                <div class="card-body">
+                    <div class="icon mb-3">
+                        <i class="fas fa-envelope fa-3x"></i>
+                    </div>
+                    <h5 class="fw-bold">EMAIL</h5>
+                    <p><strong>Request for Proposal</strong><br>Info@weifieldgroup.com</p>
+                    <p><strong>Electrical Service Calls</strong><br>service@weifieldcontracting.com</p>
+                    <p><strong>Employment Opportunities</strong><br>careers@weifieldcontracting.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Internal CSS -->
+<style>
+    body {
+        background-color: #ffffff; /* Matching the background */
+        color: rgb(0, 0, 0);
+    }
+
+    .icon i {
+        color: rgb(0, 0, 0);
+    }
+
+    .card {
+        background-color: transparent;
+    }
+
+    h2 {
+        letter-spacing: 2px;
+    }
+
+    .card-body p {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .card-body h5 {
+        margin-bottom: 15px;
+    }
+</style>
+
+{% endblock %}
