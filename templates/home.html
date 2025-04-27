@@ -14,7 +14,9 @@
         <div class="text-2xl font-bold text-blue-600">The Healthy Vision</div>
         <div>
             <a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-600 mx-4">About</a>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'admin_dashboard' %}" class="text-gray-600 hover:text-blue-600 mx-4">Appointments</a>
+            {% elif user.is_authenticated %}
             <a href="{% url 'appointment_list' %}" class="text-gray-600 hover:text-blue-600 mx-4">My Appointments</a>
             {% else %}
             <a href="{% url 'login' %}" class="text-gray-600 hover:text-blue-600 mx-4">My Appointments</a>
