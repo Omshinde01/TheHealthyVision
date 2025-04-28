@@ -47,14 +47,19 @@
                 Learn to <span class="font-bold text-blue-600">love</span> your body and develop a healthy relationship with food. 
                 Let’s make nutrition stress-free!
             </p>
-            {% if user.is_authenticated %}
-                <a href="{% url 'book_appointment' %}" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+            {% if user.is_authenticated and user.is_staff %}
+                <a href="{% url 'admin_dashboard' %}" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+                    Check Appointment
+                </a>
+           {% elif user.is_authenticated %}
+                <a href="{% url 'book_appointment' %}" class="mt-6 inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition">
                     Book Appointment
                 </a>
             {% else %}
                 <a href="{% url 'login' %}" class="mt-6 inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-500 transition">
-                    Login to Book Appointment
+                    Login To Book Appointment
                 </a>
+                
             {% endif %}
         </div>
     </div>
