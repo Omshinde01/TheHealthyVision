@@ -42,11 +42,6 @@
             <a href="{% url 'blog_create' %}" class="bg-blue-600 text-white py-2 px-6 rounded-lg shadow hover:bg-blue-700">
                 Create New Blog
             </a>
-        {% else %}
-            <p class="text-gray-600 mb-4">Login to create your own blog.</p>
-            <a href="{% url 'login' %}" class="bg-green-500 text-white py-2 px-6 rounded-lg shadow hover:bg-green-600">
-                Create New Blog
-            </a>
         {% endif %}
         
     </div>
